@@ -1,0 +1,7 @@
+
+
+.header-shadow {
+    box-shadow: 0 4px 20px rgba(247, 245, 245, 0.623); /* Adjust shadow size and opacity */
+    z-index: 10; /* Ensure the header is above other content */
+    position: relative; /* Make the header a positioning context */
+}
