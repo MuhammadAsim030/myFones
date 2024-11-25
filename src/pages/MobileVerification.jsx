@@ -3,12 +3,17 @@ import Sidebar from '../components/sidebar.jsx';
 import iphone from '../assets/iphonemyFones.png';
 import MobileCard from '../components/MobileCard.jsx';
 import Header from '../components/Header.jsx';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Buttons from '../components/buttons.jsx';
 
 const MobileVerification = () => {
     const mobileInfo = {
+        Image : {
+           " src": "IMEINUmber"
+        },
         basic: {
-            "IMEI Number": "2348765409876543",
+            "IMEI Number": "123456789",
+            "IMEI2 Number": "987654321",
             "Manufacture": "Apple",
             "Phone Model": "iPhone Pro Max"
         },
@@ -50,48 +55,65 @@ const MobileVerification = () => {
         }
     };
 
+    const handleContinue = () => {
+        alert('you will redirected to Login Page');
+    }
+
+
     return (
         <>
             <Header />
-            <div className="flex flex-col lg:flex-row bg-[#01014B] h-full">
-                <div className='shadow-lg z-10'>
+            <div className="flex h-screen bg-[#01014B]">
+                <div className='z-10 h-full w-1/4'>
                     <Sidebar />
                 </div>
-                <div className="flex flex-col justify-center items-center p-4 w-full">
-                    <h1 className='bg-transparent mb-4 text-white rounded-full'>2348765409876543</h1>
-                    <input
-                        type="search"
-                        placeholder="Enter IMEI Number..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        onKeyPress={handleSearch}
-                        className="w-full max-w-md p-2 rounded-lg bg-[#F2F2F21A] text-white placeholder-[#7a7ace] focus:outline-none focus:ring-2 focus:ring-[#DFAD23] transition duration-200 mb-4"
-                    />
-                    {searchTerm === mobileInfo.basic["IMEI Number"] && (
-                        <div>
-                            <MobileCard>
-                                <div className="flex items-center w-full mb-4">
-                                    <img src={iphone} alt="iPhone" className="w-16 mr-4" />
-                                    <div>
-                                        <h2 className="text-white text-xl font-semibold">Apple-iPhone-15 Pro Max</h2>
-                                        <p className="text-[#7a7ace]">IMEI: {mobileInfo.basic["IMEI Number"]}</p>
+                <div className="flex flex-col h-full w-full"> 
+                    <div className="flex flex-col flex-grow overflow-y-auto p-4"> 
+                        <div className="flex flex-col mt-10 mb-20 w-full items-center">
+                            
+                            <input
+                                type="search"
+                                placeholder="Enter IMEI Number..."
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                onKeyDown={handleSearch} 
+                                className="w-full max-w-md p-2 shadow-md shadow-gray-600 rounded-lg bg-[#F2F2F21A] text-white placeholder-[#7a7ace] focus:outline-none focus:ring-2 focus:ring-[#DFAD23] transition duration-200 mb-4"
+                            />
+                            {searchTerm === mobileInfo.basic["IMEI Number"] && (
+                                <div className='shadow-md shadow-white mb-20 p-8'>
+                                    <div className="flex flex-col items-center">
+                                        <h2 className='text-white text-xl'>IMEI Registration</h2>
+                                        <hr className="border-t border-white w-full mt-2 mb-4" />
+                                    </div>
+                                    <MobileCard className="w-80"> 
+                                        <div className="flex items-center gap-6 w-full mb-4">
+                                            <img src={iphone} alt="iPhone" className="w-16 mr-4" />
+                                            <div>
+                                                <h2 className="text-white text-xl font-semibold">Apple-iPhone-15 Pro Max</h2>
+                                                <p className="text-[#7a7ace]">IMEI: {mobileInfo.basic["IMEI Number"]}</p>
+                                            </div>
+                                            <div>
+                                                <h2 className="text-white text-xl font-semibold">USA based</h2>
+                                                <p className="text-[#7a7ace]">IMEI 2: {mobileInfo.basic["IMEI2 Number"]}</p>
+                                            </div>
+                                        </div>
+                                    </MobileCard>
+                                    <div className='flex flex-col gap-4'> 
+                                        <MobileCard title="Basic Information" className="w-80">{renderTable(mobileInfo.basic)}</MobileCard>
+                                        <MobileCard title="Extra Information" className="w-80">{renderTable(mobileInfo.extra)}</MobileCard>
+                                        <MobileCard title="Owner Information" className="w-80">{renderTable(mobileInfo.owner)}</MobileCard>
                                     </div>
                                 </div>
-                            </MobileCard>
-                            <div className='flex flex-col lg:flex-row gap-4'>
-                                <MobileCard title="Basic Information">{renderTable(mobileInfo.basic)}</MobileCard>
-                                <MobileCard title="Extra Information">{renderTable(mobileInfo.extra)}</MobileCard>
-                                <MobileCard title="Owner Information">{renderTable(mobileInfo.owner)}</MobileCard>
-                            </div>
+                            )}
                         </div>
-                    )}
-                    <div className="flex flex-col lg:flex-row justify-center mt-4">
-                        <Link to="/home">
-                            <button className="ring-2 ring-[#DFAD23] text-white ml-5 p-2 px-8 rounded-full mr-4 mb-2 lg:mb-0">Back</button>
-                        </Link>
-                        <Link to="/home">
-                            <button className="bg-[#DFAD23] text-white p-2 px-8 rounded-full mr-10 mb-2 lg:mb-0">Continue</button>
-                        </Link>
+                    </div>
+                    <div className="fixed bottom-4 left-4 right-4 flex justify-end gap-4">
+                        <Buttons 
+                            fullWidth={false} 
+                            continueText="Continue" 
+                            continueLink='/Profile' 
+                            onClick={handleContinue}
+                        />
                     </div>
                 </div>
             </div>

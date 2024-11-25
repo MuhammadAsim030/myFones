@@ -2,6 +2,7 @@ import mainImg from '../assets/webFones1.png'
 import { Link } from 'react-router-dom';
 import React from 'react'
 
+
 function Main() {
   return (
     <div>

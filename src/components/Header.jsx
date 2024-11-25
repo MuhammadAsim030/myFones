@@ -17,11 +17,11 @@ const Header = () => {
             <div className="flex flex-col items-center">
                 <img 
                     src={navImg} 
-                    className="h-15 w-[100px]" 
-                    onClick={() => navigate('/home')} 
+                    className="h-15 mt-4 w-[50px]" 
+                    onClick={() => navigate('/')} 
                     alt="Logo" 
                 />
-                <span className='text-[#DFAD23] text-sm leading-3 mb-2 ml-2'>Welcome to myFones</span>
+                <span className='text-[#DFAD23] text-xs  mb-2 ml-2'>Welcome to myFones</span>
             </div>
             <div className="flex items-center mr-20 p-2 bg-[#DFAD23] rounded-full">
                 <img 

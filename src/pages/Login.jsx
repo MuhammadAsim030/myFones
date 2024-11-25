@@ -16,10 +16,7 @@ const Login = () => {
     <div className="flex flex-col h-screen header-shadow">
       <Header />
       <div className="flex flex-grow h-full">
-        <div className="shadow-lg z-10">
-          <Sidebar />
-        </div>
-        <div className="flex flex-grow bg-[#01014B] justify-center p-4 relative"> 
+        <div className="flex flex-grow bg-[#01014B] justify-center p-8 relative"> 
         {isVerified ? (
               <MobileVerification />
             ) : (
